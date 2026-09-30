@@ -1,5 +1,6 @@
 from ...shell.Components.UITextbox import UITextbox
 
+
 def ECHO(command: str, output: UITextbox) -> str:
     """ Prints a message or string on the screen """
 

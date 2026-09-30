@@ -115,6 +115,7 @@ class JSON:
 
         return True
 
+
 class TXT:
     """ Handles TXT files and plain data structures. """
 

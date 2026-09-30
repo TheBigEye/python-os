@@ -1,9 +1,8 @@
 {
     "Emote": "Ouch!",
-    "Messagge" : "Your PC ran into a problem and needs to be shutdown.",
-    "Comment" : "If this problem persists, please contact your PC manufacturer.",
+    "Messagge": "Your PC ran into a problem and needs to be shutdown.",
+    "Comment": "If this problem persists, please contact your PC manufacturer.",
     "Shutdown_time": 16,
-
     "Codes": {
         "0x00000000": {
             "name": "NO_ERROR",

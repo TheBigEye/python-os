@@ -1,11 +1,12 @@
 from tkinter import Button, Frame, Label
 
 import tkintermapview as tkmapview
+
 from Libs.pyImage.Image import Image
 from System.shell.Attributes.Draggable import drag_it
 
-class Map(Frame):
 
+class Map(Frame):
     """
     Map viewer
     """
@@ -20,8 +21,10 @@ class Map(Frame):
         self.master = master
         self.draggable = draggable
 
-        self.Map_image = Image.setImage("Assets/Shell/Programs/Map/Window.png", None, "#ff00ff", "#002C4F")  # Map image base
-        self.Splash_logo_image = Image.setImage("Assets/Shell/Programs/Map/Map_icon.png", (112, 112), "#ff00ff", "#002C4F")  # Splash image
+        self.Map_image = Image.setImage("Assets/Shell/Programs/Map/Window.png", None, "#ff00ff",
+                                        "#002C4F")  # Map image base
+        self.Splash_logo_image = Image.setImage("Assets/Shell/Programs/Map/Map_icon.png", (112, 112), "#ff00ff",
+                                                "#002C4F")  # Splash image
         self.Splash_image = Image.setImage("Assets/Shell/Programs/Map/Splash.png")  # Splash image
 
         self.Map = Label(
@@ -36,8 +39,7 @@ class Map(Frame):
         self.Map.place(relx=.2, y=132)
         self.Map_view.place(x=0.5, y=23)
 
-
-# ----------------------------------------------------------------- [Close map button] -------------------------------------------------------------------------
+        # ----------------------------------------------------------------- [Close map button] -------------------------------------------------------------------------
 
         self.Close_button_image = Image.setImage("Assets/Shell/Window/Close_button.png")  # Map close button
         self.Close_button_red_image = Image.setImage("Assets/Shell/Window/Close_button_red.png")  # Map close button
@@ -60,16 +62,16 @@ class Map(Frame):
             command=Close_Map
         )
 
-        self.Close_button.bind("<Enter>", lambda event: self.Close_button.config(image = self.Close_button_red_image))
-        self.Close_button.bind("<Leave>", lambda event: self.Close_button.config(image = self.Close_button_image))
+        self.Close_button.bind("<Enter>", lambda event: self.Close_button.config(image=self.Close_button_red_image))
+        self.Close_button.bind("<Leave>", lambda event: self.Close_button.config(image=self.Close_button_image))
 
         self.Close_button.place(x=520, y=4)
 
-
-# ----------------------------------------------------------------- [Maximize map button] ----------------------------------------------------------------------
+        # ----------------------------------------------------------------- [Maximize map button] ----------------------------------------------------------------------
 
         self.Maximize_button_image = Image.setImage("Assets/Shell/Window/Maximize_button.png")  # Map maximize button
-        self.Maximize_button_light_image = Image.setImage("Assets/Shell/Window/Maximize_button_light.png")  # Map maximize button light
+        self.Maximize_button_light_image = Image.setImage(
+            "Assets/Shell/Window/Maximize_button_light.png")  # Map maximize button light
 
         def Maximize_Map():
             """Maximize the Map"""
@@ -87,16 +89,19 @@ class Map(Frame):
             command=Maximize_Map
         )
 
-        self.Maximize_button.bind("<Enter>", lambda event: self.Maximize_button.config(image = self.Maximize_button_light_image))
-        self.Maximize_button.bind("<Leave>", lambda event: self.Maximize_button.config(image = self.Maximize_button_image))
+        self.Maximize_button.bind("<Enter>",
+                                  lambda event: self.Maximize_button.config(image=self.Maximize_button_light_image))
+        self.Maximize_button.bind("<Leave>",
+                                  lambda event: self.Maximize_button.config(image=self.Maximize_button_image))
 
         self.Maximize_button.place(x=502, y=4)
 
-
         # ----------------------------------------------------------------- [Minimize terminal button] ----------------------------------------------------------------------
 
-        self.Minimize_button_image = Image.setImage("Assets/Shell/Window/Minimize_button.png")  # Terminal minimize button
-        self.Minimize_button_light_image = Image.setImage("Assets/Shell/Window/Minimize_button_light.png")  # Terminal minimize button light
+        self.Minimize_button_image = Image.setImage(
+            "Assets/Shell/Window/Minimize_button.png")  # Terminal minimize button
+        self.Minimize_button_light_image = Image.setImage(
+            "Assets/Shell/Window/Minimize_button_light.png")  # Terminal minimize button light
 
         def Minimize_Map():
             """Minimize the Map"""
@@ -114,13 +119,14 @@ class Map(Frame):
             command=Minimize_Map,
         )
 
-        self.Minimize_button.bind("<Enter>", lambda event: self.Minimize_button.config(image = self.Minimize_button_light_image))
-        self.Minimize_button.bind("<Leave>", lambda event: self.Minimize_button.config(image = self.Minimize_button_image))
+        self.Minimize_button.bind("<Enter>",
+                                  lambda event: self.Minimize_button.config(image=self.Minimize_button_light_image))
+        self.Minimize_button.bind("<Leave>",
+                                  lambda event: self.Minimize_button.config(image=self.Minimize_button_image))
 
         self.Minimize_button.place(x=484, y=4)
 
-
-# ---------------------------------------------------------------------- [Terminal input entry] ---------------------------------------------------------------------------
+        # ---------------------------------------------------------------------- [Terminal input entry] ---------------------------------------------------------------------------
         def Splash_screen(time):
             """Splash screen"""
 

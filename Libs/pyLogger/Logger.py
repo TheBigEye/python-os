@@ -18,6 +18,7 @@ import sys
 
 can_log = False
 
+
 class Color:
     """ Logger styles and colors """
 
@@ -49,6 +50,7 @@ class Color:
     RESET = "\x1b[0m"
     END = '\033[0m'
 
+
 class ColorizedArgsFormatter(logging.Formatter):
     """ Rewrite the record to add the color to the message """
 
@@ -74,7 +76,7 @@ class ColorizedArgsFormatter(logging.Formatter):
             color = ColorizedArgsFormatter.level_to_color[level]
             _format = fmt
             for fld in ColorizedArgsFormatter.level_fields:
-                search = "(%\(" + fld + "\).*?s)"
+                search = f"(%({fld}).*?s)"
                 _format = re.sub(search, f"{color}\\1{Color.RESET}", _format)
             formatter = logging.Formatter(_format)
             self.level_to_formatter[level] = formatter
@@ -246,7 +248,7 @@ class Logger:
             logger = logging.getLogger(calling_function)
             logger.info(msg, *args, **kwargs)
 
-    def warning( msg: str, *args, **kwargs):
+    def warning(msg: str, *args, **kwargs):
         """
         Logs a warning message.
 

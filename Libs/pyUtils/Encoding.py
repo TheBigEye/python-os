@@ -11,8 +11,9 @@ from typing import Literal
 # FORMATS CONVERSORS
 __author__ = "TheBigEye"
 
+
 # Hexadecimal ----------------------------------------------------------------
-def toHex(obj: str | int , separator: str = " "):
+def toHex(obj: str | int, separator: str = " "):
     """
     Converts an object (string or int) to hexadecimal.
 
@@ -48,6 +49,7 @@ def toHex(obj: str | int , separator: str = " "):
     # If the object is not a string or int, returns a error
     else:
         raise TypeError("The object must be a string or int.")
+
 
 def fromHex(hex_string: str):
     """Converts a hexadecimal string to string.
@@ -103,6 +105,7 @@ def toBinary(obj: str, bits: Literal[8, 16, 32, 64] = 8):
     else:
         raise TypeError("The object must be a string.")
 
+
 def fromBinary(binary_string: str):
     """Converts a binary value to string.
 
@@ -121,13 +124,13 @@ def fromBinary(binary_string: str):
     """
 
     if type(binary_string) == str:
-        binary_values = binary_string.split() # Split string on whitespaces
+        binary_values = binary_string.split()  # Split string on whitespaces
         binary_string = ""
 
         for binary_value in binary_values:
-            binary_int = int(binary_value, 2) # Converts the binary value to int
-            binary_char = chr(binary_int) # Converts the int to char
-            binary_string += binary_char # Adds the char to the string
+            binary_int = int(binary_value, 2)  # Converts the binary value to int
+            binary_char = chr(binary_int)  # Converts the int to char
+            binary_string += binary_char  # Adds the char to the string
 
         return binary_string
     else:
@@ -161,6 +164,7 @@ def toBase64(obj: str | int):
 
     else:
         raise TypeError("The object must be a string or int.")
+
 
 def fromBase64(base64_string: str):
     """Converts a base64 string to string.

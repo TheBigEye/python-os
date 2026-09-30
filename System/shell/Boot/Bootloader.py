@@ -2,9 +2,8 @@ import random
 from tkinter import Frame, Label, Misc, PhotoImage
 
 from Libs.pyLogger.Logger import Logger
-from System.utils.utils import Asset_colored
-from System.utils.vars import Assets_directory
 from System.core.boot import routines
+from System.utils.utils import Asset_colored
 
 __author__ = 'TheBigEye'
 __version__ = '1.5'
@@ -49,7 +48,8 @@ class Bootloader(Frame):
 
         # Make a list of frames
         self.frames = [
-            PhotoImage(file="Assets/Shell/Boot/Bootloader/Loading 2.gif", format="gif -index %i" % (i)) for i in range(self.frames_count)
+            PhotoImage(file="Assets/Shell/Boot/Bootloader/Loading 2.gif", format="gif -index %i" % (i)) for i in
+            range(self.frames_count)
         ]
 
         # Show and update the frames
@@ -78,7 +78,7 @@ class Bootloader(Frame):
             self.loading.place(relx=.5, y=416, anchor="center")
             self.master.after(1200, self.Boot_logo.place(relx=.5, y=276, anchor="center"))
 
-            routines() # Execute the routines (essential for the system)
+            routines()  # Execute the routines (essential for the system)
 
         def quit_os_bootloader():
 

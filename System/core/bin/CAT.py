@@ -1,6 +1,7 @@
 from ...core.filesystem import get_file_content
 from ...shell.Components.UITextbox import UITextbox
 
+
 def CAT(command: str, output: UITextbox) -> str:
     """ Prints and return the files content """
 

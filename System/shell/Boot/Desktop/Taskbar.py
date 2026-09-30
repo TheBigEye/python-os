@@ -1,4 +1,4 @@
-from tkinter import Button, Misc, PhotoImage
+from tkinter import Button, Misc
 
 from Libs.pyImage.Image import Image
 
@@ -18,7 +18,6 @@ class Taskbar_button(Button):
     """
 
     def __init__(self, master: Misc, button_image_path: str, master_image_path: str, position: tuple) -> None:
-
         self.master = master
         self.button_image_path = button_image_path
         self.master_image_path = master_image_path
@@ -28,8 +27,8 @@ class Taskbar_button(Button):
 
         self.image_color = Image.getTkColor(master_image_path, position[0], position[1])
         self.image_active_color = ("#%02x%02x%02x" % (
-            int(self.image_color[1:3], 16) + self.bright, # Red
-            int(self.image_color[3:5], 16) + self.bright, # Green
+            int(self.image_color[1:3], 16) + self.bright,  # Red
+            int(self.image_color[3:5], 16) + self.bright,  # Green
             int(self.image_color[5:7], 16) + self.bright  # Blue
         ))
 
@@ -47,5 +46,5 @@ class Taskbar_button(Button):
         )
 
         # Binds the mouse enter and leave events
-        self.bind("<Enter>", lambda event: self.config(image = self.active_image))
-        self.bind("<Leave>", lambda event: self.config(image = self.normal_image))
+        self.bind("<Enter>", lambda event: self.config(image=self.active_image))
+        self.bind("<Leave>", lambda event: self.config(image=self.normal_image))

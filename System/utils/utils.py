@@ -15,33 +15,32 @@ import os
 import urllib.request
 from tkinter import Misc
 
-from Libs.pyLogger.Logger import Logger
 from PIL import Image as Img
-from PIL.Image import Image
 from PIL.ImageTk import PhotoImage
-from System.utils.colormap import Color
+
+from Libs.pyLogger.Logger import Logger
 from System.utils.vars import Assets_directory, Loading, XCursor_2
+
 
 # -------------------------------------------[ Time ]------------------------------------------- #
 
 def Get_Current_Time():
-
     """
     Return the current time in a string.
     """
 
     return str(datetime.datetime.now())
 
-def Get_Current_Date():
 
+def Get_Current_Date():
     """
     Return the current date in a string.
     """
 
     return str(datetime.date.today())
 
-def Get_Current_Date_Time():
 
+def Get_Current_Date_Time():
     """
     Return the current date and time in a string.
     """
@@ -52,7 +51,6 @@ def Get_Current_Date_Time():
 # -------------------------------------------[ Misc ]------------------------------------------- #
 
 def Execute(master: Misc, Loading_time: float, Function, *args):
-
     """
     This function will execute a function with a loading time.
     """
@@ -82,7 +80,6 @@ def Execute(master: Misc, Loading_time: float, Function, *args):
 
 
 def Asset_colored(Folder_name: str, file_name_and_extension: str, hue_value):
-
     # First: Search the folder inside from Assets folder and save the path
     for root, dirs, files in os.walk(Assets_directory):
         for folder in dirs:
@@ -106,6 +103,7 @@ def Asset_colored(Folder_name: str, file_name_and_extension: str, hue_value):
                 img.putdata(newData)
                 return PhotoImage(img)
 
+
 # Check if the internet is on.
 def check_internet():
     try:
@@ -116,8 +114,8 @@ def check_internet():
         Logger.warning("Check your internet connection")
         return False
 
-def Image_getcolor(image, x, y):
 
+def Image_getcolor(image, x, y):
     for root, dirs, files in os.walk(Assets_directory):
         for file in files:
 

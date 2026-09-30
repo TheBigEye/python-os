@@ -6,8 +6,10 @@
         This module provides functions to interact with the network.
 """
 
-import psutil
 import urllib.request
+
+import psutil
+
 
 class Network:
     """

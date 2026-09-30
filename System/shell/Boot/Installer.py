@@ -1,4 +1,4 @@
-from tkinter import Entry, Label, Text
+from tkinter import Entry, Label
 from tkinter.constants import INSERT, NORMAL
 
 from System.programs.Terminal.Commands import CMD
@@ -6,6 +6,7 @@ from System.shell.Components.UITextbox import UITextbox
 
 __author__ = 'TheBigEye'
 __version__ = '1.5'
+
 
 def Os_Installer(master):  # Display the Post-Bios window (coming soon the OOBE)
 
@@ -18,9 +19,8 @@ def Os_Installer(master):  # Display the Post-Bios window (coming soon the OOBE)
 
         CMD(Terminal, Terminal_entry, Terminal_screen)
 
-    Terminal = Label(master, width=1024, height=600 ,bg="#000000", borderwidth=0.1)
+    Terminal = Label(master, width=1024, height=600, bg="#000000", borderwidth=0.1)
     Terminal.place(x=0, y=0)
-
 
     Terminal_screen = UITextbox(
         Terminal,
@@ -32,7 +32,8 @@ def Os_Installer(master):  # Display the Post-Bios window (coming soon the OOBE)
     )
 
     Terminal_screen.config(width=145, height=38, bg="#000000", fg="#dfdfdf", state=NORMAL, insertbackground="#dfdfdf")
-    Terminal_screen.insert(INSERT, "──────────────────────────────────────────────────────────── Welcome to the terminal ────────────────────────────────────────────────────────────" + "\n\n" + ">/" + "\n\n")
+    Terminal_screen.insert(INSERT,
+                           "──────────────────────────────────────────────────────────── Welcome to the terminal ────────────────────────────────────────────────────────────" + "\n\n" + ">/" + "\n\n")
 
     Terminal_screen.place(x=1, y=1)
 

@@ -5,6 +5,7 @@ from Libs.pyImage.Image import Image
 __author__ = 'TheBigEye'
 __version__ = '1.5'
 
+
 def BIOS(master: Misc):  # Display the Bios window
 
     global Bios_Advanced_GUI

@@ -41,7 +41,6 @@ NUM_ADD = "<KP_Add>"
 NUM_ENTER = "<KP_Enter>"
 NUM_EQUAL = "<KP_Equal>"
 
-
 # Function keys
 F1 = "<F1>"
 F2 = "<F2>"
@@ -56,7 +55,6 @@ F10 = "<F10>"
 F11 = "<F11>"
 F12 = "<F12>"
 
-
 # Arrow keys
 UP_ARROW = "<Up>"
 DOWN_ARROW = "<Down>"
@@ -68,7 +66,6 @@ HOME = "<Home>"
 END = "<End>"
 PAGE_UP = "<Prior>"
 PAGE_DOWN = "<Next>"
-
 
 # Other keys
 KEY_A = "<Key-a>"
