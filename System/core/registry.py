@@ -12,6 +12,7 @@
 import os
 import sqlite3
 
+
 ### DWORD ###
 def set_DWORD(value):
     """
@@ -31,6 +32,7 @@ def set_DWORD(value):
     byte_array = bytearray(value, 'utf-8')
     hex_string = byte_array.hex()
     return '0x' + hex_string
+
 
 def get_DWORD(value):
     """
@@ -52,6 +54,7 @@ def get_DWORD(value):
     string = byte_array.decode('utf-8')
     return string
 
+
 ### BYNARY ###
 def set_BINARY(value):
     """
@@ -68,8 +71,9 @@ def set_BINARY(value):
         >>> '01110100...'
     """
 
-    bin = ''.join(format(ord(i),'08b') for i in value)
+    bin = ''.join(format(ord(i), '08b') for i in value)
     return bin
+
 
 def get_BINARY(value):
     """
@@ -86,8 +90,9 @@ def get_BINARY(value):
         >>> 'test'
     """
 
-    binstr = ''.join(chr(int(value[i:i+8],2)) for i in range(0,len(value),8))
+    binstr = ''.join(chr(int(value[i:i + 8], 2)) for i in range(0, len(value), 8))
     return binstr
+
 
 # Registry structure
 # - Hive: HKEY_LOCAL_MACHINE
@@ -127,8 +132,8 @@ class REG():
         # make a new key in the registry
         try:
             # split the hive from the key
-            hive = key.split('/')[0] # HKEY_CURRENT_USER
-            key = '/'.join(key.split('/')[1:]) # SOFTWARE/Microsoft/Windows/CurrentVersion/etc ...
+            hive = key.split('/')[0]  # HKEY_CURRENT_USER
+            key = '/'.join(key.split('/')[1:])  # SOFTWARE/Microsoft/Windows/CurrentVersion/etc ...
 
             # convert the value to the correct type
             if type == 'REG_SZ':
@@ -154,8 +159,8 @@ class REG():
         # delete a key in the registry
         try:
             # split the hive from the key
-            hive = key.split('/')[0] # HKEY_CURRENT_USER
-            key = '/'.join(key.split('/')[1:]) # SOFTWARE/Microsoft/Windows/CurrentVersion/etc ...
+            hive = key.split('/')[0]  # HKEY_CURRENT_USER
+            key = '/'.join(key.split('/')[1:])  # SOFTWARE/Microsoft/Windows/CurrentVersion/etc ...
 
             # connect to the database
             conn = sqlite3.connect(path)
@@ -170,8 +175,8 @@ class REG():
     def get(path, key):
         try:
             # split the hive from the key
-            hive = key.split('/')[0] # HKEY_CURRENT_USER
-            key = '/'.join(key.split('/')[1:]) # SOFTWARE/Microsoft/Windows/CurrentVersion/etc ...
+            hive = key.split('/')[0]  # HKEY_CURRENT_USER
+            key = '/'.join(key.split('/')[1:])  # SOFTWARE/Microsoft/Windows/CurrentVersion/etc ...
 
             # Get the key type
             conn = sqlite3.connect(path)
@@ -205,13 +210,18 @@ class REG():
         # - HKEY_CLASSES_ROOT/ -> SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System/EnableLUA = 1 (REG_DWORD)
 
         def make_list(key, key_value, key_type):
-            if key_type == 'REG_SZ': key_value = str(key_value) # convert to string
-            elif key_type == 'REG_DWORD': key_value = get_DWORD(key_value) # convert from hex to string
-            elif key_type == 'REG_BINARY': key_value = get_BINARY(key_value) # Convert from binary to string: 01110100011001010111001101110100 -> 'test'
+            if key_type == 'REG_SZ':
+                key_value = str(key_value)  # convert to string
+            elif key_type == 'REG_DWORD':
+                key_value = get_DWORD(key_value)  # convert from hex to string
+            elif key_type == 'REG_BINARY':
+                key_value = get_BINARY(
+                    key_value)  # Convert from binary to string: 01110100011001010111001101110100 -> 'test'
             else:
                 raise Exception('Invalid type')
 
-            return str("        " + key + (" " * (28 - len(key))) + " = " + key_value + (" " * (24 - len(key_value))) + " (" + key_type + ")")
+            return str("        " + key + (" " * (28 - len(key))) + " = " + key_value + (
+                        " " * (24 - len(key_value))) + " (" + key_type + ")")
 
         try:
             reglist = ""

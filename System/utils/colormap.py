@@ -15,7 +15,7 @@
         TheBigEye 6-sep-2021
 """
 
-colors = { # TODO: Add support for other colors
+colors = {  # TODO: Add support for other colors
     "white": "#ffffff", "black": "#000000",
     "light gray": "#d3d3d3", "gray": "#808080", "dark gray": "#404040",
     "light red": "#ff0000", "red": "#dd0000", "dark red": "#800000",
@@ -45,6 +45,7 @@ colors = { # TODO: Add support for other colors
     "light teal": "#008080", "teal": "#008080", "dark teal": "#006666"
 }
 
+
 class Color:
     """
     Color utilities and functions
@@ -71,11 +72,11 @@ class Color:
 
         # converts the colors dict, from hex to rgb
         for key, value in colors.items():
-            colors[key] = tuple(int(value[i:i+2], 16) for i in (1, 3, 5))
+            colors[key] = tuple(int(value[i:i + 2], 16) for i in (1, 3, 5))
 
             if color in colors:
                 return colors[color]
-            else :
+            else:
                 Logger.error("Color {} not found, returning black", color)
                 return (0, 0, 0)
 
@@ -102,7 +103,7 @@ class Color:
         for key, value in colors.items():
             if color in colors:
                 return value
-            else :
+            else:
                 Logger.error("Color {} not found, returning black", color)
                 return "#000000"
 
@@ -127,9 +128,9 @@ class Color:
         hex_color = hex_color.lower()
         if hex_color[0] == "#":
             rgb_color = hex_color[1:]
-            rgb_color = tuple(int(rgb_color[i:i+2], 16) for i in (0, 2, 4))
+            rgb_color = tuple(int(rgb_color[i:i + 2], 16) for i in (0, 2, 4))
             return rgb_color
-        else :
+        else:
             Logger.error("Hex color {} not found, returning black", hex_color)
             return (0, 0, 0)
 
@@ -156,7 +157,7 @@ class Color:
             for i in rgb_color:
                 hex_color += "{:02x}".format(i)
             return hex_color
-        else :
+        else:
             Logger.error("RGB color {} not found, returning black", rgb_color)
             return "#000000"
 
@@ -238,12 +239,18 @@ class Color:
             q = value * (1.0 - f * saturation)
             t = value * (1.0 - (1.0 - f) * saturation)
 
-            if hue_i == 0: rgb_color = (value, t, p)
-            elif hue_i == 1: rgb_color = (q, value, p)
-            elif hue_i == 2: rgb_color = (p, value, t)
-            elif hue_i == 3: rgb_color = (p, q, value)
-            elif hue_i == 4: rgb_color = (t, p, value)
-            elif hue_i == 5: rgb_color = (value, p, q)
+            if hue_i == 0:
+                rgb_color = (value, t, p)
+            elif hue_i == 1:
+                rgb_color = (q, value, p)
+            elif hue_i == 2:
+                rgb_color = (p, value, t)
+            elif hue_i == 3:
+                rgb_color = (p, q, value)
+            elif hue_i == 4:
+                rgb_color = (t, p, value)
+            elif hue_i == 5:
+                rgb_color = (value, p, q)
 
             return rgb_color
         else:

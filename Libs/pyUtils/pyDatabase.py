@@ -6,8 +6,9 @@
         Contains functions to manipulate database objects.
 """
 
-import sqlite3
 import os
+import sqlite3
+
 
 def isDigit(s):
     """
@@ -20,6 +21,7 @@ def isDigit(s):
         return True
     except ValueError:
         return False
+
 
 def PythonizeValue(value):
     """
@@ -38,6 +40,7 @@ def PythonizeValue(value):
     else:
         return value
 
+
 class DB:
     """
     Class for handling databases.
@@ -55,11 +58,17 @@ class DB:
         conn = sqlite3.connect(path)
         c = conn.cursor()
         c.execute(
-            """CREATE TABLE IF NOT EXISTS data (
-                id INTEGER PRIMARY KEY,
-                key TEXT,
-                value TEXT
-            )"""
+            """CREATE TABLE IF NOT EXISTS data
+               (
+                   id
+                   INTEGER
+                   PRIMARY
+                   KEY,
+                   key
+                   TEXT,
+                   value
+                   TEXT
+               )"""
         )
         conn.commit()
         conn.close()
@@ -83,7 +92,8 @@ class DB:
             value = str(value)
 
         c.execute(
-            """INSERT INTO data (key, value) VALUES (?, ?)""",
+            """INSERT INTO data (key, value)
+               VALUES (?, ?)""",
             (key, value)
         )
         conn.commit()
@@ -101,7 +111,9 @@ class DB:
         conn = sqlite3.connect(path)
         c = conn.cursor()
         c.execute(
-            """SELECT * FROM data WHERE key = ?""",
+            """SELECT *
+               FROM data
+               WHERE key = ?""",
             (key,)
         )
         # get key value from key array
@@ -111,7 +123,6 @@ class DB:
                 value = i[2]
         conn.close()
         return PythonizeValue(value)
-
 
     def update(path: str, key: str, value: str | bool | int):
         """
@@ -134,7 +145,9 @@ class DB:
             value = str(value)
 
         c.execute(
-            """UPDATE data SET value = ? WHERE key = ?""",
+            """UPDATE data
+               SET value = ?
+               WHERE key = ?""",
             (value, key)
         )
         conn.commit()
@@ -152,7 +165,9 @@ class DB:
         conn = sqlite3.connect(path)
         c = conn.cursor()
         c.execute(
-            """DELETE FROM data WHERE key = ?""",
+            """DELETE
+               FROM data
+               WHERE key = ?""",
             (key,)
         )
         conn.commit()
@@ -170,7 +185,8 @@ class DB:
         conn = sqlite3.connect(path)
         c = conn.cursor()
         c.execute(
-            """DELETE FROM data"""
+            """DELETE
+               FROM data"""
         )
         conn.commit()
         conn.close()
@@ -187,7 +203,8 @@ class DB:
         conn = sqlite3.connect(path)
         c = conn.cursor()
         c.execute(
-            """SELECT * FROM data"""
+            """SELECT *
+               FROM data"""
         )
         data = c.fetchall()
         conn.close()

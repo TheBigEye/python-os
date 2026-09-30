@@ -7,6 +7,7 @@
 """
 
 import sys
+
 from System.core.system import System
 
 if __name__ == "__main__":

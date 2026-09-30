@@ -2,12 +2,11 @@
 
 import random
 from tkinter import *
-from tkinter import ttk
-
 from tkinter import Label
 from typing import Optional
 
 from Libs.pyLogger.Logger import Logger
+
 
 # UI Textbox class -> the class uses the Text widget -> UITextbox(master: Misc, size: tuple, colored_words: list of tuples (word, color), text: str)
 class UITextbox(Text):
@@ -120,7 +119,8 @@ class UITextbox(Text):
         self.see(END)
         self.update()
 
-    def insert_text(self, text: str, fg_color: Optional[str] = None, bg_color: Optional[str] = None, font: Optional[str] = None) -> None:
+    def insert_text(self, text: str, fg_color: Optional[str] = None, bg_color: Optional[str] = None,
+                    font: Optional[str] = None) -> None:
         # generate random tag name for avoid update a tag that is already used
         tag_name = 'colortag_' + ''.join(random.choice('0123456789abcdef') for _ in range(8))
 

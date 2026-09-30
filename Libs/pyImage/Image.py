@@ -20,6 +20,7 @@ from PIL.ImageTk import PhotoImage
 
 __author__ = "TheBigEye"
 
+
 class Image:
     """ Implements an image. """
 
@@ -96,7 +97,7 @@ class Image:
         image = image.resize(size)
         return image
 
-    def replaceColor(image: PILImg, color: tuple | str, new_color: tuple | str ) -> PILImg:
+    def replaceColor(image: PILImg, color: tuple | str, new_color: tuple | str) -> PILImg:
         """
         Replaces a color in an image.
         """
@@ -271,9 +272,9 @@ class Image:
         color = "#%02x%02x%02x" % (pixel[0], pixel[1], pixel[2])
         return color
 
-
     # MY MASTERPIECE --------------------------------------------------------------------
-    def setImage(path: str, size: tuple = None, fromColor: str | tuple = None, toColor: str | tuple = None, hue: int = None, saturation: int = None, value: int = None) -> PhotoImage:
+    def setImage(path: str, size: tuple = None, fromColor: str | tuple = None, toColor: str | tuple = None,
+                 hue: int = None, saturation: int = None, value: int = None) -> PhotoImage:
 
         """
         Make a image from a path.
@@ -301,7 +302,6 @@ class Image:
             `TypeError` If the value is not an integer.
 
         """
-
 
         # Get the image
         image = Image.getImage(path)

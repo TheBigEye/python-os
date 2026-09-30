@@ -17,10 +17,10 @@ from System.shell.Components.UITextbox import UITextbox
 __author__ = 'TheBigEye'
 __version__ = '1.0'
 
+
 ### COMMANDS:
 
 def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
-
     """
     Summary:
     --------
@@ -87,7 +87,6 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
 
     # Commands ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
     # var command will create a variable, like: var(name, value) , > .
     def var_command(command):
         """Var command"""
@@ -131,7 +130,6 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
     if command.startswith("clear_var("):
         clear_var_command(command)
 
-
     # if command will check if a condition is true, like: if(condition) , > .
     def if_command(command):
         """If command"""
@@ -148,7 +146,6 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
     if command.startswith("if("):
         if_command(command)
 
-
     # while command will check if a condition is true, like: while(condition) , > .
     def while_command(command):
         """While command"""
@@ -161,7 +158,6 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
 
     if command.startswith("while("):
         while_command(command)
-
 
     def repeat_command(command):
         """Repeat command"""
@@ -178,7 +174,6 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
     if command.startswith("repeat("):
         repeat_command(command)
 
-
     # delay command will delay the terminal for a number of seconds, like: delay(number) , > .
     def delay_command(command):
         """Delay command"""
@@ -192,8 +187,7 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
     if command.startswith("delay("):
         delay_command(command)
 
-
-# -------------------------------------------------------------------------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------------------------------------------------------------------------------
 
     # time command will print the current time, like: time() , > time.
     def time_command():
@@ -205,7 +199,6 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
     if command.startswith("time"):
         time_command()
 
-
     # exit command will exit the terminal, like: exit() , > .
     def exit_command():
         """Exit command"""
@@ -215,8 +208,7 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
     if command.startswith("exit"):
         exit_command()
 
-
-# -------------------------------------------------------------------------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------------------------------------------------------------------------------
 
     def python_interpreter(command):
 
@@ -226,7 +218,7 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
 
         # if command is empty, will print a new line.
         if command == "":
-            output.insert_colored(">>> " + "\n", "#F84B3C" )
+            output.insert_colored(">>> " + "\n", "#F84B3C")
 
             # if command is not empty, will print the command in Terminal_screen and execute it.
         else:
@@ -285,9 +277,9 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
                 ("8", "#D2879B"),
                 ("9", "#D2879B"),
                 ("0", "#D2879B"),
-                ("None" , "#D2879B"),
-                ("True" , "#D2879B"),
-                ("False" , "#D2879B")
+                ("None", "#D2879B"),
+                ("True", "#D2879B"),
+                ("False", "#D2879B")
             ]
 
             output.insert_color_word(str(command), stx_color)
@@ -303,8 +295,7 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
     if command.startswith(">>> "):
         python_interpreter(command)
 
-
-# -------------------------------------------------------------------------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------------------------------------------------------------------------------
 
     def dfile_command(command):
 
@@ -330,14 +321,13 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
         output.insert(INSERT, "~$" + command + "\n")
         dfile_command(command)
 
-
     def edit_file_command(command):
 
         from System.core.filesystem import edit_file
 
         command = command.replace("efile ", "")
 
-        #efile file_name "content"
+        # efile file_name "content"
         command = command.split(" \"")
         file_name = command[0]
         file_content = command[1]
@@ -348,7 +338,6 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
     if command.startswith("efile "):
         output.insert(INSERT, "~$" + command + "\n")
         edit_file_command(command)
-
 
     def metafile_command(command):
 
@@ -365,7 +354,6 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
     if command.startswith("metafile "):
         output.insert(INSERT, "~$" + command + "\n")
         metafile_command(command)
-
 
     def get_processes_command():
 
@@ -405,7 +393,6 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
         output.insert(INSERT, "~$ " + command + "\n")
         master.after(1000, foreground_command(command))
 
-
     def background_command(command):
 
         """
@@ -421,7 +408,6 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
 
         from System.programs.Terminal.Terminal import set_background
 
-
         output.insert(INSERT, "~$ " + command + "\n")
         command = command.replace("background ", "")
 
@@ -435,7 +421,6 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
 
     if command.startswith("background"):
         master.after(1000, background_command(command))
-
 
     def neofetch_command():
 
@@ -456,8 +441,7 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
     if command.startswith("neofetch"):
         master.after(1000, neofetch_command())
 
-
-# -------------------------------------------------------------------------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------------------------------------------------------------------------------
 
     # info, print the base system information
     def info_command():
@@ -467,10 +451,10 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
 
         output.insert(INSERT, "~$ info" + "\n")
         output.insert(INSERT, "Info: ─────────────────────────────────────────────────────────────────────" + "\n")
-        output.insert(INSERT, "System:     " + platform.system() +    "\n")
-        output.insert(INSERT, "Release:    " + platform.release() +   "\n")
-        output.insert(INSERT, "Version:    " + platform.version() +   "\n")
-        output.insert(INSERT, "Machine:    " + platform.machine() +   "\n")
+        output.insert(INSERT, "System:     " + platform.system() + "\n")
+        output.insert(INSERT, "Release:    " + platform.release() + "\n")
+        output.insert(INSERT, "Version:    " + platform.version() + "\n")
+        output.insert(INSERT, "Machine:    " + platform.machine() + "\n")
         output.insert(INSERT, "Processor:  " + platform.processor() + "\n")
         output.insert(INSERT, "───────────────────────────────────────────────────────────────────────────" + "\n\n")
         output.see(END)
@@ -478,31 +462,31 @@ def CMD(master: Label, entry: Entry, output: UITextbox) -> None:
     if command.startswith("info"):
         info_command()
 
-# -------------------------------------------------------------------------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------------------------------------------------------------------------------
 
     def help_command():
         """Help command"""
 
-        output.insert(INSERT,  "~$ help" + "\n")
-        output.insert(INSERT,  "Help: ─────────────────────────────────────────────────────────────────────" + "\n")
-        output.insert(INSERT,  "Commands:                                                                  " + "\n")
-        output.insert(INSERT,  "  help                        - Prints this help message                   " + "\n")
-        output.insert(INSERT,  "  clear                       - Clears the terminal screen                 " + "\n")
-        output.insert(INSERT,  "  exit                        - Closes the terminal                        " + "\n")
-        output.insert(INSERT,  "  info                        - Prints system information                  " + "\n")
-        output.insert(INSERT,  "  ps                          - Prints the processes                       " + "\n")
-        output.insert(INSERT,  "  dir                         - Prints the current directory               " + "\n")
-        output.insert(INSERT,  "  tree | <directory>          - Prints the directory tree                  " + "\n")
-        output.insert(INSERT,  "  mkfolder | mkdir <name>     - Makes a new folder                         " + "\n")
-        output.insert(INSERT,  "  rmfolder | rmdir <name>     - Removes a folder                           " + "\n")
-        output.insert(INSERT,  "  mkfile | touch <name>       - Makes a new file on the current dir        " + "\n")
-        output.insert(INSERT,  "  efile <file>                - Edit a file content                        " + "\n")
-        output.insert(INSERT,  "  metafile <file>             - Show the metadata of a file                " + "\n")
-        output.insert(INSERT,  "  neofetch                    - Prints the system information              " + "\n")
-        output.insert(INSERT,  "  foreground <color>          - Change the terminal foreground color       " + "\n")
-        output.insert(INSERT,  "  background <color>          - Change the terminal background color       " + "\n")
-        output.insert(INSERT,  "  >>> <python code>           - Run a python command                       " + "\n")
-        output.insert(INSERT,  "───────────────────────────────────────────────────────────────────────────" + "\n\n")
+        output.insert(INSERT, "~$ help" + "\n")
+        output.insert(INSERT, "Help: ─────────────────────────────────────────────────────────────────────" + "\n")
+        output.insert(INSERT, "Commands:                                                                  " + "\n")
+        output.insert(INSERT, "  help                        - Prints this help message                   " + "\n")
+        output.insert(INSERT, "  clear                       - Clears the terminal screen                 " + "\n")
+        output.insert(INSERT, "  exit                        - Closes the terminal                        " + "\n")
+        output.insert(INSERT, "  info                        - Prints system information                  " + "\n")
+        output.insert(INSERT, "  ps                          - Prints the processes                       " + "\n")
+        output.insert(INSERT, "  dir                         - Prints the current directory               " + "\n")
+        output.insert(INSERT, "  tree | <directory>          - Prints the directory tree                  " + "\n")
+        output.insert(INSERT, "  mkfolder | mkdir <name>     - Makes a new folder                         " + "\n")
+        output.insert(INSERT, "  rmfolder | rmdir <name>     - Removes a folder                           " + "\n")
+        output.insert(INSERT, "  mkfile | touch <name>       - Makes a new file on the current dir        " + "\n")
+        output.insert(INSERT, "  efile <file>                - Edit a file content                        " + "\n")
+        output.insert(INSERT, "  metafile <file>             - Show the metadata of a file                " + "\n")
+        output.insert(INSERT, "  neofetch                    - Prints the system information              " + "\n")
+        output.insert(INSERT, "  foreground <color>          - Change the terminal foreground color       " + "\n")
+        output.insert(INSERT, "  background <color>          - Change the terminal background color       " + "\n")
+        output.insert(INSERT, "  >>> <python code>           - Run a python command                       " + "\n")
+        output.insert(INSERT, "───────────────────────────────────────────────────────────────────────────" + "\n\n")
         output.see(END)
 
     if command.startswith("help"):

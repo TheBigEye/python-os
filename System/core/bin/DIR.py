@@ -1,6 +1,7 @@
 from ...core.filesystem import get_current_directory, list_directory
 from ...shell.Components.UITextbox import UITextbox
 
+
 def DIR(output: UITextbox) -> str:
     """ Change the current directory """
 

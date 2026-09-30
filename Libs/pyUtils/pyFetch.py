@@ -10,7 +10,9 @@ import os
 import platform
 import sys
 import time
+
 import psutil
+
 
 class Color:
     """ Neofetch colors and styles. """
@@ -54,6 +56,7 @@ class Color:
     RESET = "\x1b[0m"
     END = '\033[0m'
 
+
 # ---------------------------------------------------------------------------------------------------------------------------------
 
 def Set_chars_colors(ascii_art: str, chars: str, color: Color) -> str:
@@ -69,24 +72,27 @@ def Set_chars_colors(ascii_art: str, chars: str, color: Color) -> str:
         `str`: The colored ascii art
     """
 
-    for data in ascii_art: # Loop through the ascii art
-        if chars != None: # If the chars are not none
-            for char in chars: # Loop through the chars list
-                if data == char: ascii_art = ascii_art.replace(data, color + data + Color.RESET) # Replace the char with the color + char
+    for data in ascii_art:  # Loop through the ascii art
+        if chars != None:  # If the chars are not none
+            for char in chars:  # Loop through the chars list
+                if data == char: ascii_art = ascii_art.replace(data,
+                                                               color + data + Color.RESET)  # Replace the char with the color + char
 
     return ascii_art
+
 
 def Get_username(color: Color) -> str:
     """ Returns the username of the user """
 
-    Username = "" # Initialize the username
-    if color != None: # If the color is not none
+    Username = ""  # Initialize the username
+    if color != None:  # If the color is not none
         Username += str(Color.BOLD + color + str(os.getlogin() + "@" + platform.node()).upper() + Color.RESET) + "\n"
         Username += str("-" * len(str(os.getlogin() + "@" + platform.node()).upper())) + "\n"
     else:
         Username += str(str(os.getlogin() + "@" + platform.node()).upper()) + "\n"
         Username += str("-" * len(str(os.getlogin() + "@" + platform.node()).upper())) + "\n"
     return Username
+
 
 def Get_OS_info(color: Color, OS_name: str = str(platform.platform()), OS_kernel: str = str(platform.release())) -> str:
     """ Returns the OS information """
@@ -99,6 +105,7 @@ def Get_OS_info(color: Color, OS_name: str = str(platform.platform()), OS_kernel
         OS_info += str("OS: " + OS_name) + "\n"
         OS_info += str("Kernel: " + OS_kernel) + "\n"
     return OS_info
+
 
 def Get_uptime(color: Color) -> str:
     """ Returns the uptime of the system """
@@ -122,19 +129,22 @@ def Get_uptime(color: Color) -> str:
         Uptime = str("Uptime: " + Uptime_string) + "\n"
     return Uptime
 
+
 def Get_Software_info(color: Color) -> str:
     """ Returns the software information """
 
     Software_info = ""
     if color != None:
         Software_info += str(Color.BOLD + color + "Packages: " + Color.RESET + "14 (py-pkg)" + Color.RESET) + "\n"
-        Software_info += str(Color.BOLD + color + "Python: " + Color.RESET + str(sys.version.split(" ")[0]) + Color.RESET) + "\n"
+        Software_info += str(
+            Color.BOLD + color + "Python: " + Color.RESET + str(sys.version.split(" ")[0]) + Color.RESET) + "\n"
         Software_info += str(Color.BOLD + color + "Shell: " + Color.RESET + str(sys.platform) + Color.RESET) + "\n"
     else:
         Software_info += str("Packages: " + "14 (py-pkg)") + "\n"
         Software_info += str("Python: " + str(sys.version.split(" ")[0])) + "\n"
         Software_info += str("Shell: " + str(sys.platform)) + "\n"
     return Software_info
+
 
 def Get_Hardware_info(color: Color) -> str:
     """ Returns the hardware information """
@@ -145,16 +155,21 @@ def Get_Hardware_info(color: Color) -> str:
     if color != None:
         Hardware_info += str(Color.BOLD + color + "CPU: " + Color.RESET + cpu_name + Color.RESET) + "\n"
         Hardware_info += str(Color.BOLD + color + "GPU: " + Color.RESET + str("N/A")) + "\n"
-        Hardware_info += str(Color.BOLD + color + "Memory: " + Color.RESET + str(int(psutil.virtual_memory().used / 1024 / 1024)) + "MiB / " + str(int(psutil.virtual_memory().total / 1024 / 1024)) + "MiB" + Color.RESET) + "\n"
+        Hardware_info += str(Color.BOLD + color + "Memory: " + Color.RESET + str(
+            int(psutil.virtual_memory().used / 1024 / 1024)) + "MiB / " + str(
+            int(psutil.virtual_memory().total / 1024 / 1024)) + "MiB" + Color.RESET) + "\n"
     else:
         Hardware_info += str("CPU: " + cpu_name) + "\n"
         Hardware_info += str("GPU: " + str("N/A")) + "\n"
-        Hardware_info += str("Memory: " + str(int(psutil.virtual_memory().used / 1024 / 1024)) + "MiB / " + str(int(psutil.virtual_memory().total / 1024 / 1024)) + "MiB") + "\n"
+        Hardware_info += str("Memory: " + str(int(psutil.virtual_memory().used / 1024 / 1024)) + "MiB / " + str(
+            int(psutil.virtual_memory().total / 1024 / 1024)) + "MiB") + "\n"
     return Hardware_info
+
 
 # ---------------------------------------------------------------------------------------------------------------------------------
 
-def get_neofetch(logo_file_path: str, info_color: Color = Color.YELLOW, chars: list = [None, None, None, None, None, None, None]) -> str:
+def get_neofetch(logo_file_path: str, info_color: Color = Color.YELLOW,
+                 chars: list = [None, None, None, None, None, None, None]) -> str:
     """
     This function prints the neofetch in terminal
 
@@ -176,7 +191,7 @@ def get_neofetch(logo_file_path: str, info_color: Color = Color.YELLOW, chars: l
     # Make the neoftech string list
     Info_string = ""
     Info_string += Get_username(info_color)
-    Info_string += Get_OS_info(info_color, OS_name = str(platform.platform()), OS_kernel= str(platform.release()))
+    Info_string += Get_OS_info(info_color, OS_name=str(platform.platform()), OS_kernel=str(platform.release()))
     Info_string += Get_uptime(info_color)
     Info_string += Get_Software_info(info_color)
     Info_string += Get_Hardware_info(info_color)

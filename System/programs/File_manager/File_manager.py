@@ -1,12 +1,11 @@
 from tkinter import *
+
 from Libs.pyImage.Image import Image
-from System.shell.Attributes.Draggable import drag_it
-
 from System.core.filesystem import *
-
 
 __author__ = 'TheBigEye'
 __version__ = '1.1'
+
 
 class Folder(Label):
     """ Folder """
@@ -24,8 +23,10 @@ class Folder(Label):
         self.image = Image.setImage("Assets/Shell/Icons/Folder_icon.png", (24, 24), "#ff00ff", "#00142D")
         self.image_selected = Image.setImage("Assets/Shell/Icons/Folder_icon.png", (24, 24), "#ff00ff", "#001228")
 
-        self.selection_normal = Image.setImage("Assets/Shell/Programs/File manager/Selection.png", None, "#ff00ff", "#00142D")
-        self.selection_selected = Image.setImage("Assets/Shell/Programs/File manager/Selection_selected.png", None, "#ff00ff", "#00142D")
+        self.selection_normal = Image.setImage("Assets/Shell/Programs/File manager/Selection.png", None, "#ff00ff",
+                                               "#00142D")
+        self.selection_selected = Image.setImage("Assets/Shell/Programs/File manager/Selection_selected.png", None,
+                                                 "#ff00ff", "#00142D")
 
         self.selection_label = Label(
             self.master,
@@ -84,6 +85,7 @@ class Folder(Label):
         self.name_label.place(x=self.x + 25, y=(self.y) + 4)
         self.selection_label.place(x=self.x - 4, y=self.y)
 
+
 class File(Label):
     """ File """
 
@@ -99,10 +101,13 @@ class File(Label):
 
         self.icon = icon
         self.file_icon = Image.setImage("Assets/Shell/Icons/" + icon + "_icon.png", (24, 24), "#ff00ff", "#00142D")
-        self.file_icon_selected = Image.setImage("Assets/Shell/Icons/" + icon + "_icon.png", (24, 24), "#ff00ff", "#001228")
+        self.file_icon_selected = Image.setImage("Assets/Shell/Icons/" + icon + "_icon.png", (24, 24), "#ff00ff",
+                                                 "#001228")
 
-        self.selection_normal = Image.setImage("Assets/Shell/Programs/File manager/Selection.png", None, "#ff00ff", "#00142D")
-        self.selection_selected = Image.setImage("Assets/Shell/Programs/File manager/Selection_selected.png", None, "#ff00ff", "#00142D")
+        self.selection_normal = Image.setImage("Assets/Shell/Programs/File manager/Selection.png", None, "#ff00ff",
+                                               "#00142D")
+        self.selection_selected = Image.setImage("Assets/Shell/Programs/File manager/Selection_selected.png", None,
+                                                 "#ff00ff", "#00142D")
 
         self.selection_label = Label(
             self.master,
@@ -182,15 +187,14 @@ class File(Label):
             self.date_label.config(bg="#00142D")
             self.size_label.config(bg="#00142D")
 
-
         self.File.place(x=self.x + 1, y=self.y)
         self.name_label.place(x=self.x + 25, y=(self.y) + 4)
         self.date_label.place(x=self.x + 192, y=(self.y) + 4)
         self.size_label.place(x=self.x + 332, y=(self.y) + 4)
         self.selection_label.place(x=self.x - 4, y=self.y)
 
-class File_manager(Frame):
 
+class File_manager(Frame):
     """
     File manager
     """
@@ -205,8 +209,10 @@ class File_manager(Frame):
         self.master = master
         self.draggable = draggable
 
-        self.File_manager_image = Image.setImage("Assets/Shell/Programs/File manager/Window.png")  # File manager image base
-        self.Splash_logo_image = Image.setImage("Assets/Shell/Programs/File manager/File_manager_icon.png", (112, 112), "#ff00ff", "#002C4F")  # Splash image
+        self.File_manager_image = Image.setImage(
+            "Assets/Shell/Programs/File manager/Window.png")  # File manager image base
+        self.Splash_logo_image = Image.setImage("Assets/Shell/Programs/File manager/File_manager_icon.png", (112, 112),
+                                                "#ff00ff", "#002C4F")  # Splash image
         self.Splash_image = Image.setImage("Assets/Shell/Programs/File manager/Splash.png")  # Splash image
 
         self.File_manager = Label(
@@ -244,19 +250,26 @@ class File_manager(Frame):
             image_extensions = [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".tiff", ".tif"]
 
             # las carpetas y archivos se posicionan siegun el orden de la lista
-            for i in range(len(files_n_folders)): # if have a dot in the name is a file
+            for i in range(len(files_n_folders)):  # if have a dot in the name is a file
                 if files_n_folders[i].find(".") != -1:
-                    if files_n_folders[i].endswith(tuple(disc_extensions)):          File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "CD")
-                    elif files_n_folders[i].endswith(tuple(text_extensions)):        File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Text")
-                    elif files_n_folders[i].endswith(tuple(executable_extensions)):  File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Python")
-                    elif files_n_folders[i].endswith(tuple(image_extensions)):       File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Image")
-                    elif files_n_folders[i].endswith(".torrent"):                    File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Torrent")
-                    elif files_n_folders[i].endswith(".log"):                        File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Log")
-                    elif files_n_folders[i].endswith(".reg"):                        File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Reg")
+                    if files_n_folders[i].endswith(tuple(disc_extensions)):
+                        File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "CD")
+                    elif files_n_folders[i].endswith(tuple(text_extensions)):
+                        File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Text")
+                    elif files_n_folders[i].endswith(tuple(executable_extensions)):
+                        File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Python")
+                    elif files_n_folders[i].endswith(tuple(image_extensions)):
+                        File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Image")
+                    elif files_n_folders[i].endswith(".torrent"):
+                        File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Torrent")
+                    elif files_n_folders[i].endswith(".log"):
+                        File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Log")
+                    elif files_n_folders[i].endswith(".reg"):
+                        File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Reg")
                     else:
                         File(self.File_manager, 160, (i * 25) + 48, files_n_folders[i], "Unknown")
                 else:
-                    Folder(self.File_manager, 160, (i * 25) + 48, files_n_folders[i]) # folder
+                    Folder(self.File_manager, 160, (i * 25) + 48, files_n_folders[i])  # folder
 
             def parse_dir_bar(self, value):
                 """ Parse the directory bar """
@@ -310,7 +323,7 @@ class File_manager(Frame):
                 width=13,
                 height=13,
                 image=self.go_button_image,
-                activebackground = "#001228",
+                activebackground="#001228",
                 borderwidth="0",
                 command=lambda: go_arrow(self)
             )
@@ -319,7 +332,6 @@ class File_manager(Frame):
 
             # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             self.back_button_image = Image.setImage("Assets/Shell/Programs/File manager/Back_arrow.png")
-
 
             def back_arrow(self):
                 """ Go back to the previous directory """
@@ -333,13 +345,12 @@ class File_manager(Frame):
                 width=13,
                 height=13,
                 image=self.back_button_image,
-                activebackground = "#001228",
+                activebackground="#001228",
                 borderwidth="0",
                 command=lambda: back_arrow(self)
             )
 
             self.back_button.place(x=532, y=28)
-
 
             # ---------------------------------------------------------- Close button ------------------------------------------------------------
 
@@ -365,8 +376,8 @@ class File_manager(Frame):
                 command=close_window
             )
 
-            self.Close_button.bind("<Enter>", lambda event: self.Close_button.config(image = self.Close_button_red_image))
-            self.Close_button.bind("<Leave>", lambda event: self.Close_button.config(image = self.Close_button_image))
+            self.Close_button.bind("<Enter>", lambda event: self.Close_button.config(image=self.Close_button_red_image))
+            self.Close_button.bind("<Leave>", lambda event: self.Close_button.config(image=self.Close_button_image))
 
             self.Close_button.place(x=668, y=4)
 

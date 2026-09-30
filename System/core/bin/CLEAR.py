@@ -1,5 +1,6 @@
 from ...shell.Components.UITextbox import UITextbox
 
+
 def CLEAR(output: UITextbox) -> str:
     """ Clear the screen """
 
@@ -7,4 +8,3 @@ def CLEAR(output: UITextbox) -> str:
     output.update()
 
     return output.get_text()
-

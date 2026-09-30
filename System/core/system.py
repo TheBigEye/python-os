@@ -15,7 +15,6 @@ from tkinter import PhotoImage, Tk
 
 from Libs.pyLogger.Logger import Logger
 from Libs.pyUtils.pyFetch import Color, get_neofetch
-
 from System.core.boot import boot_check, set_boot, set_desktop_mode
 from System.core.kernel import screen_check
 
@@ -30,6 +29,7 @@ START_PROCESSES = {
     "SCREEN CHECK": [screen_check],
     "BOOT CHECK": [boot_check]
 }
+
 
 class Display(Tk):
     """ Start the window amd run the procresses """
@@ -47,15 +47,15 @@ class Display(Tk):
 
         self.screen_width = self.winfo_screenwidth()
         self.screen_height = self.winfo_screenheight()
-        self.window_x = (self.screen_width /2) - (self.WIDTH /2)
-        self.window_y = (self.screen_height /2) - (self.HEIGHT /2)
+        self.window_x = (self.screen_width / 2) - (self.WIDTH / 2)
+        self.window_y = (self.screen_height / 2) - (self.HEIGHT / 2)
 
         self.geometry('%dx%d+%d+%d' % (self.WIDTH, self.HEIGHT, self.window_x, self.window_y))
         self.resizable(False, False)
 
-        self.ICON = PhotoImage(file = "Assets/Icon.png")
+        self.ICON = PhotoImage(file="Assets/Icon.png")
 
-        self.configure(background= "#000000")
+        self.configure(background="#000000")
         self.wm_iconphoto(True, self.ICON)
 
         # Run the processes
@@ -65,6 +65,7 @@ class Display(Tk):
 
         self.update()
         self.mainloop()
+
 
 class System():
     """ Parse arguments"""
