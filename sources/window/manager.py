@@ -20,7 +20,7 @@ class WindowManager:
         self.windows = []
 
         self.root.iconbitmap("./assets/icon.ico")
-        self.root.config(cursor="@./assets/cursor_a.cur")
+        self.root.config(cursor="@./assets/cursor_b.cur")
 
         self.main_frame = tk.Frame(self.root, bg="#29A97E")
         self.main_frame.pack(fill="both", expand=True)
